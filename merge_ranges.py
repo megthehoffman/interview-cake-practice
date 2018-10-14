@@ -6,9 +6,21 @@ def merge_ranges(meetings):
     >>> merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)])
     [(0, 1), (3, 8), (9, 12)]
 
+    >>> merge_ranges([(0, 1), (0, 1), (3, 5), (4, 8), (10, 12), (9, 10)])
+    [(0, 1), (3, 8), (9, 12)]
+
+    >>> merge_ranges([(0, 1)])
+    [(0, 1)]
+
+    >>> merge_ranges([])
+    []
+
     """
     sorted_meetings = sorted(meetings, key = lambda x: x[0])
     # print(sorted_meetings)
+
+    if len(sorted_meetings) <= 1:
+        return sorted_meetings
 
     i = 0
     j = 1
@@ -32,7 +44,6 @@ def merge_ranges(meetings):
         if j < len(meetings):
             current_tuple = sorted_meetings[i]
             next_tuple = sorted_meetings[j]
-        
         
 
     return condensed_meetings
