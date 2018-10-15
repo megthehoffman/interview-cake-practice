@@ -41,7 +41,7 @@ def reverse_list_in_place(lst):
     # OPTION 4: list slicing, [start:stop:step]
 
     # return lst[::-1]
-    
+
 
     # OPTION 5: reverse without using built-in methods or functions
 
@@ -51,7 +51,7 @@ def reverse_list_in_place(lst):
     while left_idx < right_idx:
         lst[left_idx], lst[right_idx] = lst[right_idx], lst[left_idx]
         left_idx += 1 
-        right_idx += 1
+        right_idx -= 1
 
     return lst
 
