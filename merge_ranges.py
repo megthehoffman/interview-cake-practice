@@ -34,6 +34,7 @@ def merge_ranges(meetings):
     """
     sorted_meetings = sorted(meetings, key = lambda x: x[0])
     # print(sorted_meetings)
+    # sorting takes O(n log n), possibly faster?
 
     if len(sorted_meetings) <= 1:
         return sorted_meetings
@@ -47,29 +48,36 @@ def merge_ranges(meetings):
     condensed_meetings = []
 
     while j < len(sorted_meetings):
+    # O(n) + O(n log n) => O(n + n log n) => O(n log n)
         if current_tuple == next_tuple:
+        # O(1)
             if current_tuple not in condensed_meetings:
+            # O(1)
                 condensed_meetings.append(current_tuple)
             i += 2
             j += 2
         elif next_tuple[0] <= current_tuple[1] and next_tuple[1] <= current_tuple[1]:
+        # O(1)
             if current_tuple not in condensed_meetings:
+            # O(1)
                 condensed_meetings.append(current_tuple)
             j += 1
         elif next_tuple[0] <= current_tuple[1]:
+        # O(1)
             condensed_range = (current_tuple[0], next_tuple[1])
             condensed_meetings.append(condensed_range)
             i += 2
             j += 2
         else:
+        # O(1)
             condensed_meetings.append(current_tuple)
             i += 1
             j += 1
 
         if j < len(meetings):
+        # O(1)
             current_tuple = sorted_meetings[i]
-            next_tuple = sorted_meetings[j]
-        
+            next_tuple = sorted_meetings[j] 
 
     return condensed_meetings
 
