@@ -19,28 +19,44 @@ def reverse_list_in_place(lst):
     """
 
     # OPTION 1: reverse() method, returns an iterator in place
-    lst.reverse()
+    # lst.reverse()
 
-    return lst
+    # return lst
 
 
     # OPTION 2: reversed() function, returns an iterable in place
-    reversed_lst = []
+    # reversed_lst = []
 
-    for x in reversed(lst):
-        reversed_lst.append(x)
+    # for x in reversed(lst):
+    #     reversed_lst.append(x)
 
-    return reversed_lst
+    # return reversed_lst
 
 
     # OPTION 3: reversed() function, listified
 
-    return list(reversed(lst))
+    # return list(reversed(lst))
 
 
     # OPTION 4: list slicing, [start:stop:step]
 
-    return lst[::-1]
+    # return lst[::-1]
+    
+
+    # OPTION 5: reverse without using built-in methods or functions
+
+    left_idx = 0
+    right_idx = len(lst)-1
+
+    while left_idx < right_idx:
+        lst[left_idx], lst[right_idx] = lst[right_idx], lst[left_idx]
+        left_idx += 1 
+        right_idx += 1
+
+    return lst
+
+
+
 
 
 if __name__ == "__main__":
