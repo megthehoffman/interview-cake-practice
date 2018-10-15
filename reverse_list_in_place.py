@@ -45,18 +45,15 @@ def reverse_list_in_place(lst):
 
     # OPTION 5: reverse without using built-in methods or functions
 
-    left_idx = 0
-    right_idx = len(lst)-1
+    # left_idx = 0
+    # right_idx = len(lst)-1
 
-    while left_idx < right_idx:
-        lst[left_idx], lst[right_idx] = lst[right_idx], lst[left_idx]
-        left_idx += 1 
-        right_idx -= 1
+    # while left_idx < right_idx:
+    #     lst[left_idx], lst[right_idx] = lst[right_idx], lst[left_idx]
+    #     left_idx += 1 
+    #     right_idx -= 1
 
-    return lst
-
-
-
+    # return lst
 
 
 if __name__ == "__main__":
