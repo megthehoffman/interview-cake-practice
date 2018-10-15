@@ -48,18 +48,18 @@ def merge_ranges(meetings):
     condensed_meetings = []
 
     while j < len(sorted_meetings):
-    # O(n) + O(n log n) => O(n + n log n) => O(n log n)
+    # O(n^2) + O(n log n) => O(n^2 + n log n) => O(n^2)
         if current_tuple == next_tuple:
         # O(1)
             if current_tuple not in condensed_meetings:
-            # O(1)
+            # O(n)
                 condensed_meetings.append(current_tuple)
             i += 2
             j += 2
         elif next_tuple[0] <= current_tuple[1] and next_tuple[1] <= current_tuple[1]:
         # O(1)
             if current_tuple not in condensed_meetings:
-            # O(1)
+            # O(n)
                 condensed_meetings.append(current_tuple)
             j += 1
         elif next_tuple[0] <= current_tuple[1]:
