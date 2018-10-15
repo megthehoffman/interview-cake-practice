@@ -47,10 +47,15 @@ def merge_ranges(meetings):
     condensed_meetings = []
 
     while j < len(sorted_meetings):
-        if next_tuple[0] <= current_tuple[1] and next_tuple[1] <= current_tuple[1]:
-            condensed_meetings.append(current_tuple)
+        if current_tuple == next_tuple:
+            if current_tuple not in condensed_meetings:
+                condensed_meetings.append(current_tuple)
             i += 2
             j += 2
+        elif next_tuple[0] <= current_tuple[1] and next_tuple[1] <= current_tuple[1]:
+            if current_tuple not in condensed_meetings:
+                condensed_meetings.append(current_tuple)
+            j += 1
         elif next_tuple[0] <= current_tuple[1]:
             condensed_range = (current_tuple[0], next_tuple[1])
             condensed_meetings.append(condensed_range)
